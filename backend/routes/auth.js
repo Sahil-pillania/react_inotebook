@@ -20,7 +20,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     // check whether the user exists already \\
-
+    //  try - catch
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
