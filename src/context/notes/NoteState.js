@@ -4,7 +4,7 @@ import noteContext from "./noteContext";
 const NoteState = (props) => {
   const notesInitial = [
     {
-      _id: "6291a66170d3cbcc8a9578f1",
+      _id: "6291a66170dr3cbcc8a9578f1",
       user: "628a5d1eda05fa63afb77cb9",
       title: "my title 2",
       description: "please wake up early 2",
@@ -13,7 +13,7 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "6291a66170d3cbcc8a9578f1",
+      _id: "6291a266170d3cbcc8a9578f1",
       user: "628a5d1eda05fa63afb77cb9",
       title: "my title 2",
       description: "please wake up early 2",
@@ -22,7 +22,7 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "6291a66170d3cbcc8a9578f1",
+      _id: "6291a6e6170d3cbcc8a9578f1",
       user: "628a5d1eda05fa63afb77cb9",
       title: "my title 2",
       description: "please wake up early 2",
@@ -31,7 +31,7 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "6291a66170d3cbcc8a9578f1",
+      _id: "6291a66170ed3cbcc8a9578f1",
       user: "628a5d1eda05fa63afb77cb9",
       title: "my title 2",
       description: "please wake up early 2",
@@ -40,7 +40,7 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "6291a66170d3cbcc8a9578f1",
+      _id: "6291a66170d3cbecc8a9578f1",
       user: "628a5d1eda05fa63afb77cb9",
       title: "my title 2",
       description: "please wake up early 2",
