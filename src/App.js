@@ -10,6 +10,7 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <Home />
         <Routes>
           <Route exact path="/" component={<Home />} />
           <Route exact path="/About" component={<About />} />
