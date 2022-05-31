@@ -11,7 +11,9 @@ const NoteItem = (props) => {
       <div className="card my-2">
         <div className="card-body">
           <div className="d-flex align-items-center">
-            <h5 className="card-title m-0">{note.title}</h5>
+            <h5 className="card-title m-0" key={note._id}>
+              {note.title}
+            </h5>
             <i
               className="fa-solid fa-trash mx-2"
               onClick={() => {
