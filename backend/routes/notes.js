@@ -15,7 +15,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
   }
 });
 
-// Route2 : Add a new note using: PUT "/api/auth/addnote" . login required
+// Route2 : Add a new note using: POST "/api/auth/addnote" . login required
 router.post(
   "/addnote",
   fetchuser,
