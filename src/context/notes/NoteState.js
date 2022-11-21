@@ -4,7 +4,9 @@ import noteContext from "./NoteContext";
 const NoteState = (props) => {
   const host = "http://localhost:5000";
 
-  const notesInitial = [{ title: "sahil", description: "desc", tag: "tag" }];
+  const notesInitial = [
+    { _id: "1233434545", title: "sahil", description: "desc", tag: "tag" },
+  ];
   const [notes, setNotes] = useState(notesInitial);
   // get all notes
   const getNotes = async () => {
