@@ -122,7 +122,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
   // middleware
 
   try {
-    userId = req.user.id;
+    let userId = req.user.id;
     const user = await User.findById(userId).select("-password");
     res.send(user);
   } catch (error) {
