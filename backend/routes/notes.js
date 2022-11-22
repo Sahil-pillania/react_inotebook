@@ -51,6 +51,8 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
   const { title, description, tag } = req.body;
   // create a newNote object
   const newNote = {};
+
+  // checking whether to change or not
   if (title) {
     newNote.title = title;
   }
