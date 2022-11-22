@@ -70,10 +70,6 @@ router.post(
   }
 );
 
-// res.send(req.body);
-//   }
-// );
-
 //Route2 : Authenticate a user using POST "/api/auth/login" . No login required
 router.post(
   "/login",
