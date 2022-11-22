@@ -24,9 +24,10 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    // check whether the user exists already \\
+
     //  try - catch
     try {
+      // finding whether email already exists in database
       let user = await User.findOne({ email: req.body.email });
       if (user) {
         return res
@@ -38,7 +39,7 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
 
-      // Create a neww user
+      // Create a new user
       user = await User.create({
         name: req.body.name,
         email: req.body.email,
