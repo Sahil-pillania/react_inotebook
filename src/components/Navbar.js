@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          iNotebook
+          <b>iNotebook</b>
         </Link>
         <button
           className="navbar-toggler"
@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-
+          {/* 
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
@@ -60,7 +60,7 @@ const Navbar = () => {
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </nav>
