@@ -18,14 +18,8 @@ const Notes = () => {
       <AddNote />
       <div className="row my-3">
         <hr />
-        <h2>Your Notes</h2>
-        {notes.map((note, i) => {
-          {
-            /* console.log("note id :" + note.title);
-
-          let not = note[i]; */
-          }
-
+        <h2>Your Notes 🔔</h2>
+        {notes.map((note, index) => {
           return <NoteItem key={note._id} note={note} />;
         })}
       </div>

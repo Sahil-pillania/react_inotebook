@@ -6,6 +6,7 @@ const NoteItem = (props) => {
   const { deleteNote } = context;
 
   const { note } = props;
+  //console.log("note in noteitem is : " + note);
   return (
     <div className="col-md-3">
       <div className="card my-2">
