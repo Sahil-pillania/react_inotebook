@@ -18,7 +18,7 @@ const AddNote = () => {
     addNote(note.title, note.description, note.tag);
   };
   return (
-    <div className="container">
+    <div className="container" style={{ "max-width": "60vw" }}>
       <h2>Add a Note</h2>
       <form className="my-3">
         <div className="mb-3">

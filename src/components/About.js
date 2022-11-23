@@ -1,4 +1,3 @@
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 const About = () => {
@@ -12,7 +11,7 @@ const About = () => {
   return (
     <>
       <div style={style}>
-        <div>this is about page</div>
+        <div style={{ margin: "2rem" }}>This is about page</div>
         <h2>Sahil pillania</h2>
       </div>
     </>
