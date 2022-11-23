@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import noteContext from "./NoteContext";
-
 const NoteState = (props) => {
   const host = "http://localhost:5000";
 
@@ -76,7 +75,7 @@ const NoteState = (props) => {
     // edit logic
     for (let index = 0; index < notes.length; index++) {
       const element = notes[index];
-      if (element._id == id) {
+      if (element._id === id) {
         element.title = title;
         element.description = description;
         element.tag = tag;
