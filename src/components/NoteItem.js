@@ -5,7 +5,7 @@ const NoteItem = (props) => {
   const context = useContext(noteContext);
   const { deleteNote } = context;
 
-  const { note } = props;
+  const { note, updateNote } = props;
   //console.log("note in noteitem is : " + note);
   return (
     <div className="col-md-3" key={note._id}>
@@ -19,7 +19,12 @@ const NoteItem = (props) => {
                 deleteNote(note._id);
               }}
             ></i>
-            <i className="fa-solid fa-pen-clip mx-1"></i>
+            <i
+              className="fa-solid fa-pen-clip mx-1"
+              onClick={() => {
+                updateNote(note);
+              }}
+            ></i>
           </div>
 
           <p className="card-text">{note.description}</p>

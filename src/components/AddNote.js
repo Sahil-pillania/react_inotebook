@@ -8,7 +8,7 @@ const AddNote = () => {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "Default",
+    tag: "",
   });
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -17,6 +17,7 @@ const AddNote = () => {
     console.log("Adding new note");
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" });
   };
   return (
     <div className="container" style={{ maxWidth: "60vw" }}>
@@ -33,6 +34,7 @@ const AddNote = () => {
             aria-describedby="title"
             name="title"
             onChange={onChange}
+            required
           />
         </div>
         <div className="mb-3">
@@ -45,6 +47,20 @@ const AddNote = () => {
             id="description"
             name="description"
             onChange={onChange}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">
+            Tag
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="tag"
+            name="tag"
+            onChange={onChange}
+            required
           />
         </div>
 

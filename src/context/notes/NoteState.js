@@ -4,7 +4,7 @@ const NoteState = (props) => {
   const host = "http://localhost:5000";
 
   const notesInitial = [
-    { _id: "1233434545", title: "sahil", description: "desc", tag: "tag" },
+    // { _id: "1233434545", title: "sahil", description: "desc", tag: "tag" },
   ];
   const [notes, setNotes] = useState(notesInitial);
   // get all notes
@@ -36,7 +36,7 @@ const NoteState = (props) => {
     console.log("Your note has been added. " + response.json);
     // const json = response.json();
 
-    console.log("Adding a new note");
+    //console.log("Adding a new note");
     let note = {
       title: title,
       description: description,
@@ -47,13 +47,24 @@ const NoteState = (props) => {
     setNotes(notes.concat(note));
   };
   // Delete a note
-  const deleteNote = (id) => {
+  const deleteNote = async (id) => {
     // todo api call
     console.log("deleting the note " + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
     setNotes(newNotes);
+
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzZjZTU3MjNiNzlmOGQ3YTlkNTNiIn0sImlhdCI6MTY2OTEwMTE4Mn0.lmzUdKU5cGwmG2LBwgAPrXY2si_7jIKcX30mE8VgOtw",
+      },
+    });
+    const json = response.json();
+    console.log("deleting the note " + json);
   };
 
   // Edit a Note
@@ -61,7 +72,7 @@ const NoteState = (props) => {
     // API Call
 
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token":
@@ -69,18 +80,21 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    const json = response.json();
+    const json = await response.json();
     console.log(json);
 
+    let newNotes = JSON.parse(JSON.stringify(notes));
     // edit logic
     for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+      const element = newNotes[index];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
     }
+    setNotes(newNotes);
   };
   return (
     <noteContext.Provider
