@@ -14,6 +14,7 @@ const AddNote = () => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   const handleClick = (e) => {
+    console.log("Adding new note");
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
   };

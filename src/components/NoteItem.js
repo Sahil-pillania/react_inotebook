@@ -8,13 +8,11 @@ const NoteItem = (props) => {
   const { note } = props;
   //console.log("note in noteitem is : " + note);
   return (
-    <div className="col-md-3">
+    <div className="col-md-3" key={note._id}>
       <div className="card my-2">
         <div className="card-body">
           <div className="d-flex align-items-center">
-            <h5 className="card-title m-0" key={note._id}>
-              {note.title}
-            </h5>
+            <h5 className="card-title m-0">{note.title}</h5>
             <i
               className="fa-solid fa-trash mx-2"
               onClick={() => {
