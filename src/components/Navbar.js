@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
@@ -49,18 +49,19 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          {/* 
+
           <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
+            <NavLink to="/login">
+              <button className="btn btn-outline-success mx-3" type="submit">
+                Login
+              </button>
+            </NavLink>
+            <NavLink to="/signup">
+              <button className="btn btn-outline-warning" type="submit">
+                Signup
+              </button>
+            </NavLink>
+          </form>
         </div>
       </div>
     </nav>

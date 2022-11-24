@@ -79,6 +79,7 @@ router.post(
   ],
   async (req, res) => {
     //console.log(req.body);
+    let success = false;
 
     // if there are errors return bad request and errors
     const errors = validationResult(req);
@@ -97,9 +98,13 @@ router.post(
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Please try to login with correct credentials !" });
+          .json({
+            success,
+            error: "Please try to login with correct credentials !",
+          });
       }
 
       const payload = {
@@ -108,7 +113,9 @@ router.post(
         },
       };
       const jwtToken = jwt.sign(payload, JWT_SECRET);
-      res.json({ jwtToken });
+      success = true;
+
+      res.json({ success, jwtToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal error occured !");
