@@ -17,12 +17,13 @@ router.post(
     body("password").isLength({ min: 5 }),
   ],
   async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
+    let success = false;
 
     // if there are errors return bad request and errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     //  try - catch
@@ -32,7 +33,10 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry a user with this email already exists" });
+          .json({
+            success,
+            error: "Sorry a user with this email already exists",
+          });
       }
 
       // Password hashing
@@ -52,8 +56,9 @@ router.post(
       };
       const jwtToken = jwt.sign(data, JWT_SECRET);
       console.log(jwtToken);
+      success = true;
 
-      res.json({ jwtToken });
+      res.json({ success, jwtToken });
 
       //res.json({ user });
       // .then((user) => res.json(user))
@@ -99,12 +104,10 @@ router.post(
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
         success = false;
-        return res
-          .status(400)
-          .json({
-            success,
-            error: "Please try to login with correct credentials !",
-          });
+        return res.status(400).json({
+          success,
+          error: "Please try to login with correct credentials !",
+        });
       }
 
       const payload = {
