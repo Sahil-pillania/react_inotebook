@@ -5,7 +5,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import AddNote from "./AddNote";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+const Notes = ({ showAlert }) => {
   const [note, setNote] = useState({
     id: "",
     etitle: "",
@@ -42,11 +42,12 @@ const Notes = () => {
     e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    showAlert("Updated successfully", "success");
   };
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={showAlert} />
 
       {/* <!-- Button trigger modal --> */}
       <button
@@ -162,7 +163,12 @@ const Notes = () => {
         {notes.map((note, index) => {
           //console.log(note._id);
           return (
-            <NoteItem key={note._id} updateNote={updateNote} note={note} />
+            <NoteItem
+              key={note._id}
+              updateNote={updateNote}
+              note={note}
+              showAlert={showAlert}
+            />
           );
         })}
       </div>

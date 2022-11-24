@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Signup = () => {
+const Signup = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
@@ -18,7 +18,8 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password, cpassword } = data;
+    const { name, email, password } = data;
+
     //console.log("Login data" + data.email + " " + data.password);
     const response = await fetch("http://localhost:5000/api/auth/createUser", {
       method: "POST",
@@ -34,8 +35,9 @@ const Signup = () => {
       localStorage.setItem("token", json.jwtToken);
       //alert("User has been created. Fill the details to login");
       navigate("/login");
+      props.showAlert("Successfully Signup", "success");
     } else {
-      alert("wrong password");
+      props.showAlert("Invalid credentials", "danger");
     }
   };
 

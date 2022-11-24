@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 
-const AddNote = () => {
+const AddNote = ({ showAlert }) => {
   const context = useContext(noteContext);
   const { addNote } = context;
 
@@ -18,6 +18,7 @@ const AddNote = () => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
     setNote({ title: "", description: "", tag: "" });
+    showAlert("Added successfully", "success");
   };
   return (
     <div className="container" style={{ maxWidth: "60vw" }}>
