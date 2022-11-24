@@ -141,6 +141,9 @@ const Notes = () => {
               </button>
               <button
                 type="submit"
+                disabled={
+                  note.etitle.length < 3 || note.edescription.length < 3
+                }
                 onClick={handleClick}
                 className="btn btn-primary"
               >
@@ -153,6 +156,9 @@ const Notes = () => {
       <div className="row my-3">
         <hr />
         <h2>Your Notes 🔔</h2>
+        <div className="container">
+          {notes.length === 0 && "No notes to display"}
+        </div>
         {notes.map((note, index) => {
           //console.log(note._id);
           return (
