@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
+  const Navigate = useNavigate();
   useEffect(() => {
     //console.log(location.pathname);
   }, [location]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    Navigate("/login");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,19 +55,28 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-
-          <form className="d-flex" role="search">
-            <NavLink to="/login">
-              <button className="btn btn-outline-success mx-3" type="submit">
-                Login
-              </button>
-            </NavLink>
-            <NavLink to="/signup">
-              <button className="btn btn-outline-warning" type="submit">
-                Signup
-              </button>
-            </NavLink>
-          </form>
+          {!localStorage.getItem("token") ? (
+            <form className="d-flex" role="search">
+              <NavLink to="/login">
+                <button className="btn btn-outline-success mx-3" type="submit">
+                  Login
+                </button>
+              </NavLink>
+              <NavLink to="/signup">
+                <button className="btn btn-outline-warning" type="submit">
+                  Signup
+                </button>
+              </NavLink>
+            </form>
+          ) : (
+            <button
+              className="btn btn-danger"
+              onClick={handleLogout}
+              type="submit"
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </nav>

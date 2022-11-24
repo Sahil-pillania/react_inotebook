@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import { useNavigate } from "react-router-dom";
 import AddNote from "./AddNote";
 import NoteItem from "./NoteItem";
 
 const Notes = ({ showAlert }) => {
+  const Navigate = useNavigate();
   const [note, setNote] = useState({
     id: "",
     etitle: "",
@@ -19,8 +20,13 @@ const Notes = ({ showAlert }) => {
   const { notes, getNotes, editNote } = context;
 
   useEffect(() => {
-    getNotes();
-    // eslint-disable-next-line
+    if (localStorage.getItem("token")) {
+      getNotes();
+      // eslint-disable-next-line
+    } else {
+      Navigate("/login");
+      // eslint-disable-next-lin
+    }
   }, []);
   const updateNote = (currentNote) => {
     const { _id, title, description, tag } = currentNote;
