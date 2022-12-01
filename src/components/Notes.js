@@ -27,6 +27,7 @@ const Notes = ({ showAlert }) => {
       Navigate("/login");
       // eslint-disable-next-lin
     }
+    // eslint-disable-next-line
   }, []);
   const updateNote = (currentNote) => {
     const { _id, title, description, tag } = currentNote;
